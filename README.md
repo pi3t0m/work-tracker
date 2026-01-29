@@ -1,16 +1,119 @@
-# React + Vite
+# Work Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, full-stack task management application built with **React**, **TypeScript**, and **Node.js**. Organize your work across three workflow stages: Backlog, In Progress, and Done.
 
-Currently, two official plugins are available:
+## 🎯 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ **Three-Column Kanban Board** - Organize tasks across Backlog, In Progress, and Done
+- ✅ **Task Management** - Create, move, and delete tasks with ease
+- ✅ **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
+- ✅ **Clean UI** - Minimalist interface focused on productivity
+- ✅ **Real-time Updates** - Instant task state changes
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 18** - UI framework
+- **TypeScript** - Type-safe JavaScript
+- **CSS3** - Modern styling with Flexbox
+- **Vite** - Fast build tool
+- **Node.js** - Backend (planned)
 
-## Expanding the ESLint configuration
+## 📦 Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+# Clone the repository
+git clone https://github.com/pi3t0m/work-tracker.git
+cd work-tracker
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Open browser at `http://localhost:5173`
+
+## 🚀 Usage
+
+### Create a Task
+1. Enter task title in input field
+2. Click "Add Task" button
+3. Task appears in Backlog column
+
+### Move Tasks
+- Click **→** button to move forward (Backlog → In Progress → Done)
+- Click **←** button to move backward
+
+### Delete Tasks
+- Click **Delete** button (red) to remove task
+
+## 📊 Project Structure
+
+```
+work-tracker/
+├── src/
+│   ├── App.jsx           # Main component
+│   ├── App.css           # Styles
+│   ├── main.jsx          # Entry point
+│   └── index.css         # Global styles
+├── package.json          # Dependencies
+├── vite.config.js        # Vite config
+└── README.md             # This file
+```
+
+## 🎨 Key Features Explained
+
+### Kanban Workflow
+- **Backlog** - Tasks to be started
+- **In Progress** - Tasks currently being worked on
+- **Done** - Completed tasks
+
+### Responsive Layout
+- Centered container with max-width 1200px
+- Flexbox grid for flexible column layout
+- Mobile-friendly design
+
+## 🔄 State Management
+
+Uses React **useState** hook for task management:
+- Tasks stored in component state
+- Real-time UI updates
+- Task IDs for unique identification
+
+## 📚 Future Enhancements
+
+- [ ] Backend API with Node.js & Express
+- [ ] PostgreSQL database for persistence
+- [ ] User authentication
+- [ ] Drag-and-drop functionality
+- [ ] Task filtering & search
+- [ ] Dark mode
+- [ ] Docker containerization
+- [ ] GitHub Actions CI/CD
+
+## 🚀 Deployment
+
+Currently deployable on:
+- **Vercel** - Frontend deployment
+- **Railway/Heroku** - Backend deployment (future)
+
+## 👨‍💻 Author
+
+**Tomasz Pietkiewicz**
+- 📧 pietkiewicz.tomasz@outlook.com
+- 💼 [LinkedIn](https://linkedin.com/in/pietkiewicz-tomasz)
+- 🐙 [GitHub](https://github.com/pi3t0m)
+- 📍 Wrocław, Poland
+
+## 📝 License
+
+This project is licensed under the **MIT License** - see LICENSE file for details.
+
+## 🤝 Contributing
+
+Feel free to fork this repository and submit pull requests for any improvements!
+
+---
+
+**Built as part of my portfolio journey: L2/L3 Support Engineer → Full-Stack Developer/DevOps Engineer** 🚀
