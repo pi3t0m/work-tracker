@@ -1,5 +1,8 @@
 # Work Tracker
 
+[![Vercel Production Deployment](https://github.com/pi3t0m/work-tracker/actions/workflows/vercel-production.yml/badge.svg?branch=main)](https://github.com/pi3t0m/work-tracker/actions/workflows/vercel-production.yml)  
+**[🚀 Live App](https://work-tracker-sage.vercel.app/)**
+
 A modern, full-stack task management application built with **React**, **TypeScript**, and **Node.js**. Organize your work across three workflow stages: Backlog, In Progress, and Done.
 
 ## 🎯 Features
@@ -94,9 +97,13 @@ Uses React **useState** hook for task management:
 
 ## 🚀 Deployment
 
-Currently deployable on:
-- **Vercel** - Frontend deployment
+- **Vercel** - Frontend deployment: [https://work-tracker-sage.vercel.app/](https://work-tracker-sage.vercel.app/)
 - **Railway/Heroku** - Backend deployment (future)
+
+### CI/CD Pipeline
+- **GitHub Actions** - Automated builds and deployments on push to `main`
+- **Preview deployments** - Auto-deployed on branches other than `main`
+- **Production deployment** - Auto-deployed on `main` branch
 
 ## 👨‍💻 Author
 
