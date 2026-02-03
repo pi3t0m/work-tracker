@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { loadTasks, saveTasks } from './storage';
-
+import { loadTasks, saveTasks, clearTasks } from "./storage";
 
 // KROK 1: Definiujemy statuy (kolumny) dla taska
 // Każdy task ma jeden z tych statusów
@@ -66,7 +65,12 @@ export default function App() {
     // Filtruje taskami - zostawiam tylko te które NIE mają tego ID
     setTasks((prev) => prev.filter((t) => t.id !== id));
   };
-
+  
+  const handleReset = () => {
+    clearTasks();      // usuwa zapis z localStorage
+    setTasks([]);      // czyści UI
+    setTitle("");      // opcjonalnie czyści input
+  };
   // KROK 8: Funkcja do renderowania jednej kolumny
   // Biorę title (np. "Backlog") i status (np. "backlog")
   // Filtruje taskami które mają ten status
@@ -133,6 +137,9 @@ export default function App() {
         />
         <button className="btn btnSubmit" type="submit">
           Add
+        </button>
+        <button className="btn btnReset" type="button"onClick={handleReset}>
+          Reset
         </button>
       </form>
 

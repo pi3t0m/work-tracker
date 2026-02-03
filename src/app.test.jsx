@@ -36,4 +36,20 @@ describe("App", () => {
 
     expect(setItemSpy).toHaveBeenCalled();
   });
+
+  it("clears tasks after clicking Reset", async () => {
+    localStorage.setItem(
+      "work-tracker.tasks",
+      JSON.stringify([{ id: 1, title: "Seed task", status: "backlog" }])
+    );
+
+    render(<App />);
+    expect(screen.getByText("Seed task")).toBeInTheDocument();
+
+    const user = userEvent.setup();
+    await user.click(screen.getByRole("button", { name: "Reset" }));
+
+    expect(screen.queryByText("Seed task")).not.toBeInTheDocument();
+    expect(JSON.parse(localStorage.getItem("work-tracker.tasks"))).toEqual([]);
+  });
 });

@@ -173,3 +173,23 @@ body {
 .btnDelete:hover {
   background-color: #c0392b;
 }
+
+.btnReset {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.btnReset:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.btnReset:active {
+  transform: translateY(1px);
+}
+
+.btnReset:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
