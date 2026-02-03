@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import { loadTasks, saveTasks } from './storage';
+
 
 // KROK 1: Definiujemy statuy (kolumny) dla taska
 // Każdy task ma jeden z tych statusów
@@ -20,7 +22,11 @@ export default function App() {
   const [title, setTitle] = useState("");
 
   // KROK 4: Stan dla listy tasków (tablica wszystkich tasków)
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => loadTasks());
+
+  useEffect(() => {
+    saveTasks(tasks);
+  }, [tasks]);
 
   // KROK 5: Funkcja do obsługi submitu formularza
   const handleSubmit = (e) => {
