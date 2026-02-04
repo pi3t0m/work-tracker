@@ -1,20 +1,12 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { loadTasks, saveTasks, clearTasks } from "./storage";
+import { addTask, moveTask as moveTaskFn, deleteTask as deleteTaskFn, resetTasks } from "./tasks";
+
 
 // KROK 1: Definiujemy statuy (kolumny) dla taska
 // Każdy task ma jeden z tych statusów
 const STATUSES = ["backlog", "in_progress", "done"];
-
-// KROK 2: Funkcja pomocnicza do przenoszenia taska do następnego statusu
-// Jeśli task jest w "backlog", przechodzi do "in_progress"
-// Jeśli jest w "in_progress", przechodzi do "done"
-// Jeśli jest w "done", zostaje tam (nie można dalej)
-const nextStatus = (status) => {
-  const idx = STATUSES.indexOf(status);
-  if (idx === -1) return "backlog";
-  return STATUSES[Math.min(idx + 1, STATUSES.length - 1)];
-};
 
 export default function App() {
   // KROK 3: Stan dla inputa (tekst wprowadzany przez użytkownika)
@@ -35,42 +27,26 @@ export default function App() {
     // Sprawdzamy czy input nie jest pusty
     if (title.trim() === "") return;
 
-    // Tworzymy nowy task
-    const newTask = {
-      id: Date.now(), // unikalny ID (bardzo prosty sposób)
-      title: title.trim(), // usuwamy spacje z przodu i tyłu
-      status: "backlog", // nowy task zawsze startuje w backlog
-    };
-
     // Dodajemy task do listy (bez mutowania!) - używamy spread operator
-    setTasks((prev) => [...prev, newTask]);
-
-    // Czyścimy input po dodaniu
+    setTasks((prev) => addTask(prev, title));
     setTitle("");
   };
 
   // KROK 6: Funkcja do przenoszenia taska (Move button)
   const moveTask = (id) => {
-    // Przechodzę przez każdy task
-    // Jeśli to ten task, zmieniam mu status na nextStatus
-    setTasks((prev) =>
-      prev.map((t) =>
-        t.id === id ? { ...t, status: nextStatus(t.status) } : t
-      )
-    );
+    setTasks((prev) => moveTaskFn(prev, id));
   };
 
   // KROK 7: Funkcja do usuwania taska (Delete button)
   const deleteTask = (id) => {
-    // Filtruje taskami - zostawiam tylko te które NIE mają tego ID
-    setTasks((prev) => prev.filter((t) => t.id !== id));
+    setTasks((prev) => deleteTaskFn(prev, id));
   };
   
   const handleReset = () => {
-    clearTasks();      // usuwa zapis z localStorage
-    setTasks([]);      // czyści UI
-    setTitle("");      // opcjonalnie czyści input
-  };
+  clearTasks();
+  setTasks(resetTasks());
+  setTitle("");
+};
   // KROK 8: Funkcja do renderowania jednej kolumny
   // Biorę title (np. "Backlog") i status (np. "backlog")
   // Filtruje taskami które mają ten status
